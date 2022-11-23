@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,26 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
   <main>
-    <ul></ul>
+    <button class="botonCategoria">Add category</button>
+    <button class="botonSitio">Add site</button>
+    <div>
+      <div class="categoria">
+        <ul aria-label="Category">
+        </ul>
+      </div>
+      <div>
+        <table class="tabla">
+          <tr>
+            <td>Sitio</td>
+            <td>User</td>
+            <td>Created at</td>
+            <td>Actions</td>
+          </tr>
+        </table>
+      </div>
   </main>
   <script>
     let drawData = (data) => {
@@ -27,4 +45,5 @@
       .then(data => drawData(data))
   </script>
 </body>
+
 </html>
