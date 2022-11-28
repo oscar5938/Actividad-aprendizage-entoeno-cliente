@@ -13,12 +13,12 @@
   <main>
     <button class="botonCategoria">Add category</button>
     <button class="botonSitio">Add site</button>
-    <div>
+    <div class="contenedor">
       <div class="categoria">
         <ul aria-label="Category">
         </ul>
       </div>
-      <div>
+      <div class="contrasaeñas">
         <table class="tabla">
           <tr>
             <td>Sitio</td>
@@ -29,7 +29,7 @@
         </table>
       </div>
   </main>
-  <script>
+  <script>//categorias
     let drawData = (data) => {
       data.forEach(category => {
         let parent = document.getElementsByTagName('ul')[0]
@@ -44,6 +44,7 @@
       .then(res => res.json())
       .then(data => drawData(data))
   </script>
+
 </body>
 
 </html>
