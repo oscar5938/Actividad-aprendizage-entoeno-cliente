@@ -1,0 +1,59 @@
+body{
+    font-family: sans-serif;
+}
+.botonCategoria{
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+}
+.botonSitio{
+    background: none;
+    border-radius: 0px 5px 5px 0px;
+}
+ul:before{
+    content:attr(aria-label);
+    font-weight:bold;
+    font-size: larger;
+}
+li{
+    list-style: none;
+}
+.tabla{
+    border: black 1px solid;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+}
+.tabla tr{
+    border: black 1px solid;
+}
+.tabla tr td{
+    border: white 1px solid;
+    background-color: blue;
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    padding: 3px;
+    color: white;
+}
+.categoria ul li{
+    
+}
+.contenedor{
+    display: flex;
+    width: 90%;
+}
+.categoria{
+    width: 15%;
+    border: black 1px solid;
+    margin-left: 5%;
+
+}
+.contrasaeñas{
+    border: black 1px solid;
+    width: 75%;
+    margin-left: 3%;
+}
