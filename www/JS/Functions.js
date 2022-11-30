@@ -7,7 +7,7 @@ fetch("http://localhost:3000/sites")
     .then(res => res.json())
     .then(dataS => sites(dataS));
 
-let s = []
+let categoriesArray = []
 let drawData = (data) => {
     data.forEach(category => {
         let categoriesAux = new Categories(category.id,category.name,category.createdAt,category.updatedAt)
