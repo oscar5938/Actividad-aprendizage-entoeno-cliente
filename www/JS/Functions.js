@@ -49,3 +49,17 @@ class Categories{
         this.updatedAt = updatedAt;
     }
 }
+
+class Sites{
+    constructor(id,name,url,user,password,description,categoryId,createdAt,updatedAt){
+        this.id =id;
+        this.name =name;
+        this.url = url;
+        this.user = user;
+        this.password = password;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+}
