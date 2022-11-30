@@ -7,37 +7,19 @@ fetch("http://localhost:3000/sites")
     .then(res => res.json())
     .then(dataS => sites(dataS));
 
+let categoriesArray = []
 let drawData = (data) => {
     data.forEach(category => {
-        let parent = document.getElementsByTagName('ul')[0]
-        let child = document.createElement('li')
-        // child.innerText = JSON.stringify(category)
-        child.innerText = category.name
-        parent.appendChild(child)
+        let categoriesAux = new Categories(category.id,category.name,category.createdAt,category.updatedAt)
+        categoriesArray.push(categoriesAux)
     })
 }
 
+const sitesArray = [];
 let sites = (dataS) => {
     dataS.forEach(sites => {
-        let parent = document.getElementsByTagName('table')[0]
-        let tr = document.createElement('tr')
-        let child = document.createElement('td')
-
-        child.innerText = sites.url
-        tr.appendChild(child)
-        child = document.createElement('td')
-
-        child.innerText = sites.user
-        tr.appendChild(child)
-        child = document.createElement('td')
-
-        child.innerText = sites.createdAt
-        tr.appendChild(child)
-        child = document.createElement('td')
-
-        child.innerText = sites.name
-        tr.appendChild(child)
-        parent.appendChild(tr)
+        let sitexAux = new Sites(sites.id,sites.name,sites.ur,sites.user,sites.password,sites.description,sites.categoryId,sites.createdAt,sites.updatedAt)
+        sitesArray.push(sitexAux)
     })
 }
 
