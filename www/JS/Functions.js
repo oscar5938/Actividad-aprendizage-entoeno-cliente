@@ -48,14 +48,22 @@ class Sites {
 }
 
 function DatosCategorias() {
-
+    let cat = document.querySelectorAll("#directorioCat div")
+    for (let i = 1; i < cat.length; i++) {
+        cat[i].remove()
+    }
     categoriesArray.map(category => {
         let ul = document.getElementById('directorioCat');
+        let div = document.createElement("div")
         let li = document.createElement('li');
+        let Goma = document.createElement('img')
+        Goma.src= "https://img.icons8.com/fluency/15/null/cancel.png"
         li.innerText = category.name;
+        div.appendChild(li)
+        div.appendChild(Goma)
         li.onclick = function VerSites() {
-            let tabla = document.querySelectorAll("table tr td")
-            for (let i = 4; i < tabla.length; i++) {
+            let tabla = document.querySelectorAll("table tr")
+            for (let i = 1; i < tabla.length; i++) {
                 tabla[i].remove()
             }
             sitesArray.map(site => {
@@ -64,6 +72,7 @@ function DatosCategorias() {
                     let tr = document.createElement('tr')
                     let child = document.createElement('td')
                     let imagen = document.createElement('img')
+                    let a = document.createElement("a")
 
                     child.innerText = site.url
                     tr.appendChild(child)
@@ -78,10 +87,27 @@ function DatosCategorias() {
                     child = document.createElement('td')
 
                     imagen.src = "https://img.icons8.com/ultraviolet/40/null/opened-folder.png"
-                    child.appendChild(imagen)
+                    imagen.style.cursor = "pointer"
+                    a.href = site.url
+                    a.target = "_blank"
+                    a.appendChild(imagen)
+                    child.appendChild(a)
 
                     imagen = document.createElement("img")
                     imagen.src = "https://img.icons8.com/arcade/40/null/delete-sign.png"
+                    imagen.style.cursor="pointer"
+                    imagen.onclick = function Eliminar(){
+                        let tabla = document.querySelectorAll("table tr")
+                        for (let i = 1; i < tabla.length; i++) {
+                            tabla[i].remove()
+                         }
+                        for (let i = 0; i < sitesArray.length; i++) {
+                           if(sitesArray[i].id == site.id){
+                            sitesArray.splice(i,1)
+                           }
+                        }
+                        VerSites()
+                    }
                     child.appendChild(imagen)
 
                     imagen = document.createElement("img")
@@ -93,7 +119,18 @@ function DatosCategorias() {
                 }
             })
         };
-        ul.appendChild(li);
+        ul.appendChild(div);
+        div.style.display="flex"
+        Goma.style.height="15px"
+        Goma.style.cursor="pointer"
+        Goma.onclick = function EliminarCat(){
+            for (let i = 0; i < categoriesArray.length; i++) {
+               if(categoriesArray[i].id == category.id){
+                categoriesArray.splice(i,1)
+               }
+            }
+            DatosCategorias()
+        }
     })
 }
 
@@ -104,6 +141,7 @@ function DatosSites() {
         let tr = document.createElement('tr')
         let child = document.createElement('td')
         let imagen = document.createElement('img')
+        let a = document.createElement("a")
 
         child.innerText = site.url
         tr.appendChild(child)
@@ -118,20 +156,69 @@ function DatosSites() {
         child = document.createElement('td')
 
         imagen.src = "https://img.icons8.com/ultraviolet/40/null/opened-folder.png"
-        child.appendChild(imagen)
+        imagen.style.cursor = "pointer"
+        a.href = site.url
+        a.target = "_blank"
+        a.appendChild(imagen)
+        child.appendChild(a)
 
         imagen = document.createElement("img")
         imagen.src = "https://img.icons8.com/arcade/40/null/delete-sign.png"
+        imagen.style.cursor = "pointer"
+        imagen.onclick = function Eliminar(){
+            let tabla = document.querySelectorAll("table tr")
+            for (let i = 1; i < tabla.length; i++) {
+                tabla[i].remove()
+            }
+            for (let i = 0; i < sitesArray.length; i++) {
+               if(sitesArray[i].id == site.id){
+                sitesArray.splice(i,1)
+               }
+            }
+            DatosSites()
+        }
         child.appendChild(imagen)
 
         imagen = document.createElement("img")
         imagen.src = "https://img.icons8.com/3d-plastilina/35/null/pencil--v2.png"
+        imagen.style.cursor = "pointer"
         child.appendChild(imagen)
 
         tr.appendChild(child)
         parent.appendChild(tr)
     })
 }
+
+function PopUp(){
+    let dif = document.querySelector(".difusor")
+    let popup = document.querySelector(".PopUp")
+    document.getElementById("inputCategoria").value= ""
+    if(dif.style.position=="fixed"){
+    dif.style.position = "inherit"
+    popup.style.left = "-50%"
+    popup.style.top = "-35%"
+}else{
+    dif.style.position = "fixed"
+    popup.style.left = "50%"
+    popup.style.top = "35%"
+}
+}
+
+document.addEventListener("click", (event)=> {if(event.target.id==="botonCategoria"){PopUp()}})
+document.addEventListener("click", (event)=> {if(event.target.id==="Cancelar"){ PopUp()}})
+
+function CrearCategoria(){
+    let nombreCat = document.getElementById("inputCategoria").value
+    let idCat = categoriesArray[categoriesArray.length-1].id +1
+    let fecha = new Date()
+    let fechaIso = fecha.toISOString()
+    let newCate =new Categories(idCat, nombreCat, fechaIso, fechaIso)
+    categoriesArray.push(newCate)
+}
+
+document.addEventListener("click", (event)=> {if(event.target.id==="Aceptar"){CrearCategoria()
+    DatosCategorias()
+    PopUp()}})
 
 function randomPassword() {
     let caracteres = '1234567890qwertyuiopñlkjhgfdsazxcvbnmQWERTYUIOPÑLKJHGFDSAZXCVBNM'

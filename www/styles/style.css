@@ -75,3 +75,49 @@ color: white;
     width: 75%;
     margin-left: 3%;
 }
+
+button{
+    cursor: pointer;
+    height: 25px;
+}
+
+.difusor{
+    width: -webkit-fill-available;
+    background-color: #ffffffcc;
+    position: inherit;
+    height: -webkit-fill-available;
+}
+
+.PopUp{
+    width: 300px;
+    border: black 1px solid;
+    position: fixed;
+    left: -50%;
+    top: -35%;
+    background-color: white;
+}
+.PopUp h2{
+    margin: 2px 10px;
+}
+
+.PopUp h3{
+text-align: center;
+margin: 7px;
+}
+.PopUp input{
+    margin: 0 15%;
+    width: 200px;
+    height: 20px;
+}
+
+.PopUp div{
+    text-align: center;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.PopUp button{
+    width: 90px;
+    height: 26px;
+}
