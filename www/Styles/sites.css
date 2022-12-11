@@ -22,3 +22,8 @@ div input{
     width: 80%;
     height: 25px;
 }
+
+#description{
+    height: 150px;
+    width: 80%;
+}

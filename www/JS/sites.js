@@ -1,52 +1,63 @@
-import { Sites, Categories, sitesArray, categoriesArray } from "./Functions.js";
 
-function randomPassword() {
+
+
+
+
+document.getElementById("save").onclick = function guardarNuevo() {
+    let siteArray= window.localStorage.getItem("siteArray")
+    siteArray=JSON.parse(siteArray)
+    let id = siteArray[siteArray.length-1].id +1
+    let url = document.getElementById("url").value
+    let categoryId= document.getElementById("selCate").value
+    let name = document.getElementById("name").value
+    let user = document.getElementById("user").value
+    let password = document.getElementById("password").value
+    let description = document.getElementById("description").value
+    let fecha = new Date()
+    let fechaIso = fecha.toISOString()
+
+    let sitexAux = new Sites(id, name, url, user, password, description, categoryId, fechaIso, fechaIso)
+    siteArray.push(sitexAux)
+
+   window.localStorage.setItem('siteArray', JSON.stringify(siteArray));
+   window.location.href = "./index.html";
+   
+}
+
+
+document.querySelector("img").onclick= function randomPassword() {
     let caracteres = '1234567890qwertyuiopñlkjhgfdsazxcvbnmQWERTYUIOPÑLKJHGFDSAZXCVBNM'
     let password = "";
     for (let i = 0; i < 10; i++) {
         let nCaracter = Math.floor(Math.random() * caracteres.length + 1);
         password += caracteres.charAt(nCaracter)
     }
-    return password
+    document.getElementById("password").value = password
 }
 
-function guardarNuevo() {
-    console.log(sitesArray)
-    let name = document.getElementById("name").value;
-    let url = document.getElementById("url").value;
-    let user = document.getElementById("user").value;
-    let password;
-    if (auxRandom === true) {
-        password = randomPassword();
-    } else {
-        password = document.getElementById("password").value;
+
+document.querySelector("select").onclick = function SelectCat(){
+    let categoriaArray=window.localStorage.getItem("categoriaArray")
+    categoriaArray = JSON.parse(categoriaArray);
+    let selectC= document.querySelector("select")
+    categoriaArray.map(category => {
+    let optionc = document.createElement("option")
+
+    optionc.value=category.id
+    optionc.innerText = category.name
+    selectC.appendChild(optionc)})
+}
+
+class Sites {
+    constructor(id, name, url, user, password, description, categoryId, createdAt, updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+        this.user = user;
+        this.password = password;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
-    let description = document.getElementById("description").value;
-    let sitexAux = new Sites(sitesArray.length + 1 /*id*/ , name, url, user, password, description, "categoryId", Date.now(), Date.now())
-    sitesArray.push(sitexAux)
 }
-
-let boton = document.getElementById("password");
-boton.onclick = contrasenyaAleatoria;
-
-let auxRandom = false;
-
-function contrasenyaAleatoria() {
-    auxRandom = true;
-}
-
-function randomPassword() {
-    let caracteres = '1234567890qwertyuiopñlkjhgfdsazxcvbnmQWERTYUIOPÑLKJHGFDSAZXCVBNM'
-    let password = "";
-    for (let i = 0; i < 10; i++) {
-        let nCaracter = Math.floor(Math.random() * caracteres.length + 1);
-        password += caracteres.charAt(nCaracter)
-    }
-    return password
-}
-
-document.addEventListener("click", function(e) {
-    if (e.target.id === "save") {
-        guardarNuevo()
-    }
-})

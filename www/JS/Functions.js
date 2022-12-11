@@ -1,3 +1,5 @@
+
+
 fetch("http://localhost:3000/categories")
     .then(res => res.json())
     .then(data => drawData(data));
@@ -15,7 +17,7 @@ let drawData = (data) => {
     DatosCategorias();
 }
 
-const sitesArray = [];
+let sitesArray = [];
 let sites = (dataS) => {
     dataS.forEach(sites => {
         let sitexAux = new Sites(sites.id, sites.name, sites.url, sites.user, sites.password, sites.description, sites.categoryId, sites.createdAt, sites.updatedAt)
@@ -51,6 +53,11 @@ function DatosCategorias() {
     let cat = document.querySelectorAll("#directorioCat div")
     for (let i = 0; i < cat.length; i++) {
         cat[i].remove()
+    }
+    let CatArray =window.localStorage.getItem("categoriaArray")
+    CatArray = JSON.parse(CatArray)
+    if( CatArray!== categoriesArray){
+        categoriesArray=CatArray
     }
     categoriesArray.map(category => {
         let ul = document.getElementById('directorioCat');
@@ -132,9 +139,15 @@ function DatosCategorias() {
             DatosCategorias()
         }
     })
+    window.localStorage.setItem("categoriaArray", JSON.stringify(categoriesArray))
 }
 
 function DatosSites() {
+    let SitArray =window.localStorage.getItem("siteArray")
+    SitArray = JSON.parse(SitArray)
+    if( SitArray!== sitesArray){
+        sitesArray=SitArray
+    }
     sitesArray.map(site => {
 
         let parent = document.getElementsByTagName('table')[0]
@@ -187,6 +200,7 @@ function DatosSites() {
         tr.appendChild(child)
         parent.appendChild(tr)
     })
+    window.localStorage.setItem("siteArray", JSON.stringify(sitesArray))
 }
 
 function PopUp(){
@@ -214,11 +228,17 @@ function CrearCategoria(){
     let fechaIso = fecha.toISOString()
     let newCate =new Categories(idCat, nombreCat, fechaIso, fechaIso)
     categoriesArray.push(newCate)
+
+    let CatArray =window.localStorage.getItem("categoriaArray")
+    CatArray = JSON.parse(CatArray)
+
+    CatArray.push(newCate)
+
+    window.localStorage.setItem("categoriaArray", JSON.stringify(categoriesArray))
 }
 
 document.addEventListener("click", (event)=> {if(event.target.id==="Aceptar"){CrearCategoria()
     DatosCategorias()
     PopUp()}})
 
-
-//export { sitesArray, categoriesArray, Sites, Categories };
+    
