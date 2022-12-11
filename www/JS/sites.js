@@ -1,4 +1,4 @@
-import { Sites, Categories, sitesArray } from "./Functions.js";
+import { Sites, Categories, sitesArray, categoriesArray } from "./Functions.js";
 
 function randomPassword() {
     let caracteres = '1234567890qwertyuiopñlkjhgfdsazxcvbnmQWERTYUIOPÑLKJHGFDSAZXCVBNM'
@@ -9,6 +9,7 @@ function randomPassword() {
     }
     return password
 }
+
 function guardarNuevo() {
     console.log(sitesArray)
     let name = document.getElementById("name").value;

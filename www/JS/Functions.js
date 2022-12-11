@@ -49,7 +49,7 @@ class Sites {
 
 function DatosCategorias() {
     let cat = document.querySelectorAll("#directorioCat div")
-    for (let i = 1; i < cat.length; i++) {
+    for (let i = 0; i < cat.length; i++) {
         cat[i].remove()
     }
     categoriesArray.map(category => {
