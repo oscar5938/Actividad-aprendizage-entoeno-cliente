@@ -1,58 +1,76 @@
-body{
+body {
     font-family: sans-serif;
 }
-.botonCategoria{
+
+.botonCategoria {
     border-color: blue;
     background-color: blue;
     color: white;
     border-radius: 5px 0px 0px 5px;
 }
-.botonSitio{
+
+.botonSitio {
     background: none;
     border-radius: 0px 5px 5px 0px;
 }
-ul:before{
-    content:attr(aria-label);
-    font-weight:bold;
+
+ul:before {
+    content: attr(aria-label);
+    font-weight: bold;
     font-size: larger;
 }
-li{
+
+li {
     list-style: none;
 }
-.tabla{
+
+.tabla {
     border: black 1px solid;
     border-collapse: collapse;
     width: 80%;
     margin: 0 auto;
     margin-top: 2%;
 }
+
+.td{
+background-color: blue;
+color: white;
 }
-.tabla tr{
+
+.tabla tr {
     border: black 1px solid;
 }
-.tabla tr td{
-    border: white 1px solid;
-    background-color: blue;
+
+.tabla tr td {
+    border: black 1px solid;
     font-weight: bold;
     font-size: larger;
     text-align: center;
     padding: 3px;
-    color: white;
 }
-.categoria ul li{
-    
+
+#directorioCat li {
+    width: 80%;
 }
-.contenedor{
+
+#directorioCat li:hover {
+    background-color: #80808045;
+    cursor: pointer;
+}
+
+.contenedor {
     display: flex;
     width: 90%;
 }
-.categoria{
+
+.categoria {
     width: 15%;
     border: black 1px solid;
     margin-left: 5%;
 
 }
-.contrasaeñas{
+
+.contrasaeñas {
     border: black 1px solid;
     width: 75%;
     margin-left: 3%;
