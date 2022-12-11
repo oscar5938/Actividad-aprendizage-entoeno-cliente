@@ -221,4 +221,4 @@ document.addEventListener("click", (event)=> {if(event.target.id==="Aceptar"){Cr
     PopUp()}})
 
 
-export { sitesArray, categoriesArray, Sites, Categories };
+//export { sitesArray, categoriesArray, Sites, Categories };
