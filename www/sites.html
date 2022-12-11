@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="./Styles/sites.css">
+    <script src="./JS/sites.js" type="module"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Site</title>
 </head>
@@ -13,27 +14,32 @@
     <div class="container">
         <h2>New Site</h2>
         <div>
+            <h3>Name</h3>
+            <input type="text" id="name">
+        </div>
+        <div>
             <h3>URL</h3>
-            <input type="text">
+            <input type="text" id="url">
         </div>
         <div>
             <h3>User</h3>
-            <input type="text">
+            <input type="text" id="user">
         </div>
         <div>
             <h3>Password</h3>
-            <input type="text">
-            <img src="./Images/Tarjeta.png" alt="">
+            <input type="text" id="password">
+            <img src="./Images/Tarjeta.png" id="password">
         </div>
         <div class="descrition">
             <h3>Description</h3>
-            <input type="text">
+            <input type="text" id="description">
         </div>
         <div class="buttons">
             <button>Cancel</button>
-            <button>Save</button>
+            <button id="save">Save</button>
         </div>
     </div>
 </body>
+
 
 </html>

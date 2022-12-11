@@ -133,12 +133,5 @@ function DatosSites() {
     })
 }
 
-function randomPassword() {
-    let caracteres = '1234567890qwertyuiopñlkjhgfdsazxcvbnmQWERTYUIOPÑLKJHGFDSAZXCVBNM'
-    let password = "";
-    for (let i = 0; i < 10; i++) {
-        let nCaracter = Math.floor(Math.random() * caracteres.length + 1);
-        password += caracteres.charAt(nCaracter)
-    }
-    return password
-}
+
+export { sitesArray, categoriesArray, Sites, Categories };
