@@ -14,6 +14,8 @@ let drawData = (data) => {
         let categoriesAux = new Categories(category.id, category.name, category.createdAt, category.updatedAt)
         categoriesArray.push(categoriesAux)
     })
+    if(!window.localStorage.getItem("categoriaArray")){
+    window.localStorage.setItem("categoriaArray", JSON.stringify(categoriesArray))}
     DatosCategorias();
 }
 
@@ -23,8 +25,11 @@ let sites = (dataS) => {
         let sitexAux = new Sites(sites.id, sites.name, sites.url, sites.user, sites.password, sites.description, sites.categoryId, sites.createdAt, sites.updatedAt)
         sitesArray.push(sitexAux)
     })
+    if(!window.localStorage.getItem("siteArray")){
+        window.localStorage.setItem("siteArray", JSON.stringify(sitesArray))}
     DatosSites();
 }
+
 
 class Categories {
     constructor(id, name, createdAt, updatedAt) {
@@ -113,6 +118,7 @@ function DatosCategorias() {
                             sitesArray.splice(i,1)
                            }
                         }
+                        window.localStorage.setItem("siteArray", JSON.stringify(sitesArray))
                         VerSites()
                     }
                     child.appendChild(imagen)
@@ -135,6 +141,11 @@ function DatosCategorias() {
                if(categoriesArray[i].id == category.id){
                 categoriesArray.splice(i,1)
                }
+            }
+            window.localStorage.setItem("categoriaArray", JSON.stringify(categoriesArray))
+            let tabla = document.querySelectorAll("table tr")
+            for (let i = 1; i < tabla.length; i++) {
+                tabla[i].remove()
             }
             DatosCategorias()
         }
@@ -188,6 +199,7 @@ function DatosSites() {
                 sitesArray.splice(i,1)
                }
             }
+            window.localStorage.setItem("siteArray", JSON.stringify(sitesArray))
             DatosSites()
         }
         child.appendChild(imagen)

@@ -16,12 +16,16 @@ document.getElementById("save").onclick = function guardarNuevo() {
     let fecha = new Date()
     let fechaIso = fecha.toISOString()
 
+    if(!name || !url || !user || !password || !description || !categoryId ){
+        alert("Debes rellenar todos los campos")
+    }else{
+
     let sitexAux = new Sites(id, name, url, user, password, description, categoryId, fechaIso, fechaIso)
     siteArray.push(sitexAux)
 
    window.localStorage.setItem('siteArray', JSON.stringify(siteArray));
    window.location.href = "./index.html";
-   
+    }
 }
 
 
